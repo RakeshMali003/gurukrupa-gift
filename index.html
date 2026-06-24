@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Gurukrupa Wholesale Depot - Premium Digital Scratch Card</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Spin the lucky wheel and scratch to win up to ₹300 off. Exclusive Monsoon Special Scheme at Gurukrupa Wholesale Depot, Siruguppa, Karnataka.">
+  <meta name="theme-color" content="#5E0D1B">
+  
+  <!-- Apple Mobile Web App Settings -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Gurukrupa Premium">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Rain Animation Layer -->
+  <canvas id="rain-canvas"></canvas>
+
+  <!-- Silk fabric weave background overlay -->
+  <div class="silk-weave-overlay"></div>
+
+  <!-- Main App View -->
+  <main class="app-container">
+
+    <!-- Fixed Header (Logo with 5s long press capability) -->
+    <header class="app-header" id="app-header">
+      <div class="header-logo-container" id="admin-trigger-logo" style="cursor: pointer; user-select: none;">
+        <!-- SVG Paisley Lamp Motif -->
+        <svg class="header-motif" viewBox="0 0 100 100" width="36" height="36">
+          <path d="M50 15 C50 15, 30 45, 30 65 A 20 20 0 0 0 70 65 C 70 45, 50 15, 50 15 Z" fill="none" stroke="url(#goldGradientPremium)" stroke-width="3" />
+          <path d="M50 25 C50 25, 36 48, 36 63 A 14 14 0 0 0 64 63 C 64 48, 50 25, 50 25 Z" fill="url(#goldGradientPremium)" opacity="0.8" />
+          <circle cx="50" cy="65" r="4" fill="#5E0D1B" id="motif-center" />
+          <defs>
+            <linearGradient id="goldGradientPremium" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFE082" />
+              <stop offset="50%" stop-color="#D4AF37" />
+              <stop offset="100%" stop-color="#AA7C11" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="brand-text">
+          <h1 class="shop-name">GURUKRUPA</h1>
+          <p class="shop-subtitle">WHOLESALE DEPOT</p>
+        </div>
+      </div>
+      
+      <!-- Theme Switcher -->
+      <div class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle Dark/Light Mode">
+        <svg class="sun-icon" fill="currentColor" viewBox="0 0 24 24" width="20" height="20">
+          <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.01c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+        </svg>
+        <svg class="moon-icon" fill="currentColor" viewBox="0 0 24 24" width="20" height="20" style="display: none;">
+          <path d="M12.3 22h-.1c-5.5 0-10-4.5-10-10 0-4.8 3.5-8.9 8.2-9.7.5-.1 1 .2 1.2.7.2.5.1 1.1-.3 1.4-2.8 2.2-4.2 5.7-3.6 9.3.7 4.2 4.1 7.6 8.3 8.3 3.6.6 7.1-.8 9.3-3.6.3-.4.9-.5 1.4-.3.5.2.8.7.7 1.2-.8 4.7-4.9 8.2-9.7 8.2z"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- Personalized Hello Banner & Festival info -->
+    <div class="personalization-banner" id="greeting-banner">
+      <span id="time-greeting">Welcome 🌸</span>
+      <div id="festival-indicator" class="hidden"></div>
+    </div>
+
+    <!-- SECTION 1: HERO SCREEN -->
+    <section id="hero-screen" class="app-screen active">
+      <div class="hero-card glass-card">
+        <!-- Floating discount badges -->
+        <div class="floating-badge badge-top-right">₹300 Max</div>
+        <div class="floating-badge badge-bottom-left">₹50 Min</div>
+        
+        <div class="monsoon-badge-premium animate-pulse">
+          <span class="badge-icon">🌧️</span> Monsoon Special Scheme
+        </div>
+
+        <h2 class="hero-title font-playfair">Spin & Scratch Your Reward</h2>
+        <p class="hero-tagline">Premium Sarees • Quality Fabrics • Best Prices Everyday</p>
+
+        <!-- Social Gamification Counters -->
+        <div class="gamification-box">
+          <div class="participated-stat">
+            <span class="stars">⭐⭐⭐⭐⭐</span>
+            <span class="count-val" id="participant-count">10,284</span>
+            <span class="count-label">Customers Participated</span>
+          </div>
+          
+          <!-- Simulated Live Ticker -->
+          <div class="winners-ticker-wrapper">
+            <p class="ticker-title">🏆 Lucky Winners Today:</p>
+            <div class="ticker-content" id="winners-marquee">
+              <span>₹300 won by Bill GK-701A</span> • <span>₹250 won by Bill GK-819B</span> • <span>₹200 won by Bill GK-492D</span> • <span>₹150 won by Bill GK-092E</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="offer-terms-summary">
+          <p>Shop for <strong>₹1000 or more</strong> and get a Digital Scratch Voucher worth <strong>₹50–₹300</strong>.</p>
+        </div>
+
+        <button id="cta-get-voucher-btn" class="btn btn-primary btn-shine">
+          <span>Get My Voucher</span>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42L16.86 11H5v2z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Live Count Down Timer -->
+      <div class="timer-card glass-card">
+        <h3 class="timer-title">OFFER ENDS IN</h3>
+        <div class="countdown-container-v2" id="countdown-timer">
+          <div class="timer-block-v2">
+            <span class="timer-num-v2" id="days-v2">65</span>
+            <span class="timer-label-v2">Days</span>
+          </div>
+          <div class="timer-divider-v2">:</div>
+          <div class="timer-block-v2">
+            <span class="timer-num-v2" id="hours-v2">12</span>
+            <span class="timer-label-v2">Hours</span>
+          </div>
+          <div class="timer-divider-v2">:</div>
+          <div class="timer-block-v2">
+            <span class="timer-num-v2" id="minutes-v2">24</span>
+            <span class="timer-label-v2">Mins</span>
+          </div>
+          <div class="timer-divider-v2">:</div>
+          <div class="timer-block-v2">
+            <span class="timer-num-v2" id="seconds-v2">00</span>
+            <span class="timer-label-v2">Secs</span>
+          </div>
+        </div>
+        <p class="timer-date-subtitle">Scheme Period: July – September 30</p>
+      </div>
+
+      <!-- Quick T&C trigger -->
+      <div class="brief-terms glass-card">
+        <h3 class="brief-terms-title" id="toggle-terms-btn">
+          <span>Campaign Terms & Details</span>
+          <svg class="chevron-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+          </svg>
+        </h3>
+        <ul class="terms-list hidden" id="brief-terms-list">
+          <li>Scheme active from July to September 30th.</li>
+          <li>Location tracking must be enabled: allowed within 100 meters of the outlet.</li>
+          <li>GPS accuracy must be less than 30m; suspicious faked mocks will be blocked.</li>
+          <li>Voucher validity: 2 months. Minimum billing required: ₹1000.</li>
+          <li>Device tracking double-locked via LocalStorage and IndexedDB. One attempt only.</li>
+          <li>Show verified QR code screen at counter to redeem discount.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 2: LOCATION VERIFICATION SCREEN (Supports Pre-wheel & Post-scratch) -->
+    <section id="location-screen" class="app-screen">
+      <div class="location-card glass-card text-center">
+        <div class="status-icon-container ripple">
+          <svg class="status-icon text-gold" viewBox="0 0 24 24" width="48" height="48" fill="currentColor">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </div>
+        
+        <div id="location-checking-state">
+          <h2 class="section-title font-playfair" id="location-status-title">Verifying GPS Location...</h2>
+          <p class="section-desc" id="location-status-desc">Acquiring high-accuracy satellite signal to unlock/confirm the campaign voucher.</p>
+          <div class="spinner-gold"></div>
+        </div>
+
+        <div id="location-failed-state" class="hidden">
+          <h2 class="section-title font-playfair text-accent" id="location-fail-title">Voucher Available Only Inside Store</h2>
+          <p class="section-desc" id="location-fail-desc">Please visit Gurukrupa Wholesale Depot, Siruguppa, to participate. A verified GPS lock inside our premises is required.</p>
+          
+          <div class="distance-badge-container">
+            <span class="distance-label">GPS Distance:</span>
+            <span class="distance-value" id="current-distance-text">Calculating...</span>
+          </div>
+
+          <div class="distance-badge-container opacity-90 mt-2" style="background: rgba(255, 143, 0, 0.08); border-color: rgba(255,143,0,0.2);">
+            <span class="distance-label" style="color: var(--text-primary);">GPS Accuracy:</span>
+            <span class="distance-value" id="current-accuracy-text" style="color: var(--warning);">Acquiring...</span>
+          </div>
+
+          <p class="store-address-info"><strong>Shop Location:</strong> Near Bus Stand, Siruguppa, Bellary District, Karnataka 583121</p>
+          
+          <div class="location-action-btns">
+            <button id="retry-location-btn" class="btn btn-primary">
+              <span>Retry Position Lock</span>
+            </button>
+            <a href="https://maps.google.com/?q=Gurukrupa+Wholesale+Depot+Siruguppa" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              <span>Get Directions</span>
+            </a>
+          </div>
+
+          <!-- Tester GPS bypass mock generator (Simulates 15m high-quality accuracy) -->
+          <div class="mock-developer-panel">
+            <p class="mock-panel-text">🧪 Tester Mode (Simulate 15m Accuracy GPS inside Store):</p>
+            <button id="bypass-gps-btn" class="btn btn-mock">
+              <span>Mock In-Store GPS</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: CUSTOMER INFORMATION FORM -->
+    <section id="form-screen" class="app-screen">
+      <div class="form-card glass-card">
+        <h2 class="section-title font-playfair text-center">Customer Registration</h2>
+        <p class="section-desc text-center text-sm">Please register your bill details. Your billing number will be locked to this device voucher.</p>
+        
+        <form id="customer-info-form" class="premium-form" novalidate>
+          <div class="form-group">
+            <label for="input-customer-name">Customer Name <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <span class="input-icon">👤</span>
+              <input type="text" id="input-customer-name" name="customerName" required placeholder="Enter full name" minlength="3">
+            </div>
+            <span class="error-msg" id="name-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="input-bill-number">Bill/Invoice Number <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <span class="input-icon">🧾</span>
+              <input type="text" id="input-bill-number" name="billNumber" required placeholder="Invoice number e.g. GK/192A">
+            </div>
+            <span class="error-msg" id="bill-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="input-mobile-number">Mobile Number <span class="optional">(Optional)</span></label>
+            <div class="input-wrapper">
+              <span class="input-icon">📱</span>
+              <input type="tel" id="input-mobile-number" name="mobileNumber" placeholder="10-digit mobile number" pattern="[6789][0-9]{9}">
+            </div>
+            <span class="error-msg" id="mobile-error"></span>
+          </div>
+
+          <button type="submit" id="submit-customer-info-btn" class="btn btn-primary btn-shine">
+            <span>Proceed to Lucky Wheel</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- SECTION 4: SPIN THE LUCKY WHEEL -->
+    <section id="wheel-screen" class="app-screen">
+      <div class="wheel-screen-container glass-card text-center">
+        <h2 class="section-title font-playfair">Lucky Wheel Spinner</h2>
+        <p class="section-desc">Spin the luxury wheel to establish your potential reward tier! Once spun, you will claim the prize via scratch foil.</p>
+        
+        <div class="wheel-outer-container">
+          <div class="wheel-pointer">▼</div>
+          <div class="wheel-canvas-holder">
+            <canvas id="wheel-canvas" width="320" height="320"></canvas>
+          </div>
+        </div>
+
+        <button id="spin-wheel-btn" class="btn btn-primary btn-shine mt-4">
+          <span>SPIN THE WHEEL</span>
+        </button>
+        
+        <p class="wheel-tip mt-2" id="wheel-status-tip">Press the button to initiate your spin! 🎰</p>
+      </div>
+    </section>
+
+    <!-- SECTION 5: 3D SCRATCH CARD -->
+    <section id="scratch-screen" class="app-screen">
+      <div class="scratch-screen-wrapper text-center">
+        <div class="glass-card py-4 px-2">
+          <h2 class="section-title font-playfair">Scratch & Claim</h2>
+          <p class="section-desc">Scratch off the golden foil weave. Move your cursor/finger on the card to reveal the spun prize.</p>
+          
+          <!-- 3D Perspective Card Layout -->
+          <div class="scratch-3d-scene">
+            <div class="scratch-3d-card" id="scratch-3d-card">
+              <!-- Behind Canvas (Spun Prize underlay) -->
+              <div class="scratch-underlay" id="scratch-underlay-prize">
+                <div class="prize-card">
+                  <div class="prize-sparkles">✨</div>
+                  <div class="prize-amount-label">VERIFIED DISCOUNT</div>
+                  <div class="prize-amount-val" id="revealed-prize-amount">₹150</div>
+                  <div class="prize-off-label">OFF</div>
+                  <div class="prize-validity">Subject to validation scan</div>
+                </div>
+              </div>
+              
+              <!-- Foreground Canvas (Golden Foil) -->
+              <canvas id="scratch-canvas" width="300" height="300"></canvas>
+            </div>
+          </div>
+
+          <p class="scratch-instruction-text mt-4" id="scratch-tip">💡 Move your finger / cursor on card to scratch!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: REWARD RECEIPTS & QR CODE REDEMPTION -->
+    <section id="reward-screen" class="app-screen">
+      <div class="reward-result-card glass-card text-center">
+        <div class="ribbon-gold">
+          <span>VERIFIED TICKET</span>
+        </div>
+        
+        <h2 class="reward-title font-playfair text-gold-gradient" id="greeting-win-label">Congratulations!</h2>
+        
+        <div class="reward-display-circle">
+          <div class="reward-amount" id="won-amount-text">₹150</div>
+          <div class="reward-sub">DISCOUNT</div>
+        </div>
+
+        <!-- QR Code Redemption Canvas Container -->
+        <div class="qr-container-box">
+          <p class="qr-title">REDEEM SCANNER CODE</p>
+          <div class="qr-wrapper">
+            <canvas id="qr-code-canvas"></canvas>
+          </div>
+          <p class="qr-help">Show this QR to the shop executive at check-out</p>
+        </div>
+
+        <!-- Verification Metadata Receipt Table -->
+        <div class="reward-verification-box">
+          <p class="verification-title">CAMPAIGN METADATA</p>
+          <div class="verification-details">
+            <div class="detail-row">
+              <span class="detail-label">Name:</span>
+              <span class="detail-val" id="result-customer-name">Tester</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Bill Number:</span>
+              <span class="detail-val" id="result-bill-number">GK/99</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Timestamp:</span>
+              <span class="detail-val" id="result-scratch-time">24-Jun-2026</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Device Lock Hash:</span>
+              <span class="detail-val font-mono" id="result-fingerprint-code">FP-A92B3</span>
+            </div>
+            <div class="detail-row highlight-row">
+              <span class="detail-label">Voucher ID:</span>
+              <span class="detail-val font-mono" id="result-verification-code">GK-MON-A9D22</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="counter-instructions warning-box">
+          <p class="counter-instruction-heading">⚠️ IN-STORE REDEMPTION ONLY</p>
+          <p class="counter-instruction-sub">Valid for 2 Months from issuance. Can be verified against the printed bill at counter.</p>
+        </div>
+
+        <!-- Social Shares Grid -->
+        <div class="social-shares-container mt-4">
+          <p class="social-share-title">Follow Us & Share the Joy 🌸</p>
+          <div class="social-share-buttons">
+            <button id="btn-insta-follow" class="btn btn-insta">
+              <span>Instagram</span>
+            </button>
+            <button id="btn-whatsapp-share" class="btn btn-whatsapp">
+              <span>Share on WhatsApp</span>
+            </button>
+            <button id="btn-share-story" class="btn btn-story">
+              <span>Share Story</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Install App PWA Prompt Banner -->
+    <div id="pwa-install-banner" class="pwa-install-banner hidden">
+      <div class="pwa-banner-content">
+        <img src="icons/icon-192.png" alt="App Icon" class="pwa-banner-icon">
+        <div class="pwa-banner-text">
+          <h4>Install Gurukrupa Premium</h4>
+          <p>Spin, scratch, and cache coupons offline</p>
+        </div>
+      </div>
+      <div class="pwa-banner-actions">
+        <button id="pwa-cancel-btn" class="btn-text">Later</button>
+        <button id="pwa-install-btn" class="btn btn-small">Install</button>
+      </div>
+    </div>
+
+    <!-- Instagram Promotion Popup Modal -->
+    <div id="instagram-popup" class="modal-overlay hidden">
+      <div class="modal-content glass-card text-center animate-scale-up">
+        <div class="modal-logo-insta">
+          <!-- Insta SVG -->
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="url(#instaGradientPremium)">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            <defs>
+              <linearGradient id="instaGradientPremium" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#fdf497" />
+                <stop offset="5%" stop-color="#fdf497" />
+                <stop offset="45%" stop-color="#fd5949" />
+                <stop offset="60%" stop-color="#d6249f" />
+                <stop offset="100%" stop-color="#285AEB" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        
+        <h3 class="modal-title font-playfair">Follow us on Instagram</h3>
+        <p class="modal-desc">Stay tuned to our wedding collections, silk sarees, and special monsoon sales!</p>
+        <p class="modal-handle text-gold font-semibold">@gurukrupa_wholesale_depot</p>
+        
+        <div class="modal-actions">
+          <a href="https://www.instagram.com/gurukrupa_wholesale_depot/" target="_blank" rel="noopener noreferrer" id="instagram-follow-link" class="btn btn-primary btn-shine w-full block text-center mb-2">
+            <span>Follow Now</span>
+          </a>
+          <button id="close-instagram-modal-btn" class="btn-text-close w-full text-center py-2">
+            Maybe Later
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Authorization Passcode Overlay -->
+    <div id="admin-passcode-overlay" class="modal-overlay hidden">
+      <div class="modal-content glass-card text-center animate-scale-up">
+        <h3 class="modal-title font-playfair">Admin Authorization</h3>
+        <p class="modal-desc text-sm">Please input safety code to access panel configurations.</p>
+        <div class="form-group mt-2">
+          <div class="input-wrapper" style="text-align: center;">
+            <input type="password" id="admin-passcode-input" placeholder="Enter Admin Pin" style="text-align: center; letter-spacing: 4px;">
+          </div>
+          <span class="error-msg" id="admin-passcode-error">Incorrect Pin!</span>
+        </div>
+        <div class="modal-actions mt-4">
+          <button id="admin-auth-submit-btn" class="btn btn-primary btn-shine mb-2">Submit</button>
+          <button id="admin-auth-cancel-btn" class="btn-text-close">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hidden Admin Dashboard Overlay -->
+    <div id="admin-panel-overlay" class="modal-overlay hidden">
+      <div class="modal-content glass-card admin-dashboard-content animate-scale-up" style="max-height: 90vh; overflow-y: auto;">
+        <h3 class="modal-title font-playfair text-center text-gold">Scheme Administrator</h3>
+        
+        <div class="admin-form-section">
+          <p class="admin-section-header">🎫 REWARD WEIGHT SLIDERS (%)</p>
+          <div class="admin-slider-group">
+            <label>₹50 (Weight): <span id="weight-lbl-50">45</span>%</label>
+            <input type="range" id="weight-slider-50" min="0" max="100" value="45" class="admin-slider">
+          </div>
+          <div class="admin-slider-group">
+            <label>₹100 (Weight): <span id="weight-lbl-100">25</span>%</label>
+            <input type="range" id="weight-slider-100" min="0" max="100" value="25" class="admin-slider">
+          </div>
+          <div class="admin-slider-group">
+            <label>₹150 (Weight): <span id="weight-lbl-150">15</span>%</label>
+            <input type="range" id="weight-slider-150" min="0" max="100" value="15" class="admin-slider">
+          </div>
+          <div class="admin-slider-group">
+            <label>₹200 (Weight): <span id="weight-lbl-200">8</span>%</label>
+            <input type="range" id="weight-slider-200" min="0" max="100" value="8" class="admin-slider">
+          </div>
+          <div class="admin-slider-group">
+            <label>₹250 (Weight): <span id="weight-lbl-250">5</span>%</label>
+            <input type="range" id="weight-slider-250" min="0" max="100" value="5" class="admin-slider">
+          </div>
+          <div class="admin-slider-group">
+            <label>₹300 (Weight): <span id="weight-lbl-300">2</span>%</label>
+            <input type="range" id="weight-slider-300" min="0" max="100" value="2" class="admin-slider">
+          </div>
+          <div class="slider-sum-warning" id="slider-sum-warning">Sum of weights: <strong id="weight-sum-val">100</strong>% <span id="weight-sum-icon">✅</span></div>
+        </div>
+
+        <div class="admin-form-section mt-4">
+          <p class="admin-section-header">⚙️ SCHEME CONTROLS</p>
+          <div class="admin-checkbox-group">
+            <input type="checkbox" id="admin-scheme-enabled" checked>
+            <label for="admin-scheme-enabled">Campaign Active</label>
+          </div>
+          <div class="admin-input-group mt-2">
+            <label for="admin-offer-expiry">Expiry Date:</label>
+            <input type="date" id="admin-offer-expiry" value="2026-09-30" class="admin-date-input">
+          </div>
+        </div>
+
+        <div class="admin-form-section mt-4">
+          <p class="admin-section-header">📊 LOCAL DEVICE STATISTICS</p>
+          <div class="admin-stat-row">
+            <span>Device Scratch Count:</span>
+            <strong id="admin-device-scratches">0</strong>
+          </div>
+        </div>
+
+        <div class="admin-actions mt-4">
+          <button id="admin-reset-vouchers-btn" class="btn btn-secondary text-accent border-error w-full mb-2">
+            ⚠️ Reset All Vouchers (Device)
+          </button>
+          <button id="admin-save-btn" class="btn btn-primary btn-shine w-full mb-2">Save Settings</button>
+          <button id="admin-close-btn" class="btn-text-close w-full py-2">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky Bottom Navigation Options -->
+    <footer class="bottom-action-bar" id="bottom-action-bar">
+      <a href="https://maps.google.com/?q=Gurukrupa+Wholesale+Depot+Siruguppa" target="_blank" rel="noopener noreferrer" class="bottom-btn">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        <span>Visit Store</span>
+      </a>
+      <a href="https://wa.me/918904725135" class="bottom-btn accent-whatsapp">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M12.031 2a9.967 9.967 0 0 0-9.97 9.97c0 1.954.563 3.86 1.628 5.514L2 22l4.61-1.213a9.967 9.967 0 0 0 5.42 1.583h.004c5.498 0 9.97-4.473 9.97-9.97 0-2.657-1.034-5.155-2.91-7.033A9.907 9.907 0 0 0 12.03 2zm5.72 13.916c-.237.667-1.385 1.29-1.9 1.348-.48.053-.94.277-3.07-.562-2.562-1.01-4.185-3.606-4.312-3.774-.127-.168-.94-1.258-.94-2.395 0-1.137.595-1.696.807-1.925.212-.23.466-.288.622-.288.156 0 .312.002.446.009.144.007.337-.054.528.404.195.466.666 1.62.723 1.737.057.117.096.252.017.411-.078.158-.117.253-.23.385-.114.133-.24.298-.344.4-.117.115-.24.24-.103.473.137.23.608.997 1.3 1.613.89.794 1.64.1.84 2.01.2.115.356.1.492-.043.137-.144.666-.774.843-1.039.178-.266.356-.22.597-.13.24.09 1.52.716 1.78.847.26.13.432.196.496.304.064.109.064.63-.173 1.297z"/>
+        </svg>
+        <span>WhatsApp Call</span>
+      </a>
+    </footer>
+
+  </main>
+
+  <!-- Fullscreen Particle Canvases for celebrations -->
+  <canvas id="confetti-canvas" class="celebration-overlay-canvas"></canvas>
+  <canvas id="fireworks-canvas" class="celebration-overlay-canvas"></canvas>
+  <canvas id="coins-canvas" class="celebration-overlay-canvas"></canvas>
+
+  <!-- Scripts -->
+  <script src="qrious.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
